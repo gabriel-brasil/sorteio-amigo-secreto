@@ -17,6 +17,15 @@ const Sorteio = () => {
     setParticipanteDaVez(selectRef.current?.value as string);
   }, []);
 
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setAmigoSecreto("");
+    }, 5000);
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [amigoSecreto]);
+
   const resultado = useResultadoSorteio();
 
   const sortear = (evento: React.FormEvent<HTMLFormElement>) => {
